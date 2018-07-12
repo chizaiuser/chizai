@@ -1,0 +1,75 @@
+1.碎片化布局
+多栏布局是碎片化（fragmentation）的一个例子，页面内容会被拆分成栏。这和打印时内容被分到不同页非常类似。这个过程是碎片化规范（Fragmentation specification）处理的。这个规范包括了一些帮助控制内容切分的属性。
+例如，如果你有一组置于多栏中的卡片，并且你想确保卡片不会被截为两半分到不同的栏，你可以使用break-inside属性的avoid值。考虑浏览器兼容性的因素，你也可能会想使用遗留的page-break-inside属性。
+column-width：规定列的宽度。column-gap 属性规定列之间的间隔。column-rule 规定列之间的宽度、样式和颜色规则
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+			  padding: 20px;
+			  font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+			}
+			* {box-sizing: border-box;}
+			p {
+			  margin: 0 0 1em 0;
+			}
+			.container {
+			  width: 500px;
+			  border: 5px solid rgb(111,41,97);
+			  border-radius: .5em;
+			  padding: 10px;
+			  column-width: 120px;
+			  column-gap: 20px;
+			  column-rule: 4px dotted #000;
+			}
+			
+			.container p {
+			  page-break-inside: avoid;
+			  break-inside: avoid;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		  <p>Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean mustard tigernut jícama green bean celtuce. </p>
+		  <p>Grape silver beet  collard greens avocado quandong fennel gumbo black-eyed pea watercress potato tigernut corn groundnut. Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout</p>
+		  
+		  <p>Groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd. Gumbo kakadu plum komatsuna black-eyed pea green bean zucchini gourd winter purslane silver beet rock melon radish asparagus spinach.</p>
+		</div>
+	</body>
+</html>
+
+2.多栏布局
+column-span: all; 允许元素横跨多行显示
+
+
+
+3.CSS盒模型对齐（box alignment module）行内对齐方式
+
+在以前，要实现对齐往往会用到一些很"tricky"的方式，并且能够使用的方法也非常有限。随着CSS盒模型对齐（box alignment module）的出现，这一切都发生了变化。你将会使用它来控制网格容器与弹性盒子容器中的对齐。未来其他的各种布局方法都会应用这些对齐属性。盒模型对齐（box alignment specification）规范中的一系列详细属性如下：
+
+justify-content
+align-content
+place-content
+justify-items
+align-items
+place-items
+justify-self
+align-self
+place-self
+row-gap
+column-gap
+gap
+
+由于不同的布局模型有不同的特性，因此用于不同布局模型的对齐属性会有一些表现上的差异。让我们来看看在一些简单的网格与弹性布局中对齐是如何工作的。
+align-items和justify-items属性相对是align-self和justify-self属性的一种批量形式。这些属性会控制与元素在其网格区域（grid area）中的对齐情况。
+
+
+display：grid ------------网格布局
+首先，你必须使用 display: grid 将容器元素定义为一个 grid(网格) 布局，使用  grid-template-columns 和 grid-template-rows 设置 列 和 行 的尺寸大小，
+然后通过  grid-column 和 grid-row 将其子元素放入这个 grid(网格) 中。与 flexbox 类似，网格项（grid items）的源顺序无关紧要。
+你的 CSS 可以以任何顺序放置它们，这使得使用 媒体查询（media queries）重新排列网格变得非常容易。定义整个页面的布局，然后完全重新排列布局以适应不同的屏幕宽度，
+这些都只需要几行 CSS ，想象一下就让人兴奋。Grid(网格) 布局是有史以来最强大的CSS模块之一。
