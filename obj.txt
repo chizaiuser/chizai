@@ -1,0 +1,16 @@
+Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+Object.defineProperty(obj, prop, descriptor)
+obj
+要在其上定义属性的对象。
+prop
+要定义或修改的属性的名称。
+descriptor
+将被定义或修改的属性描述符。
+Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。 
+Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+Object.assign(target, ...sources)
+target
+目标对象。
+sources
+源对象。
+如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。
